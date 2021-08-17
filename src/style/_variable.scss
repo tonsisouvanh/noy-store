@@ -1,0 +1,20 @@
+//colors
+$green: #2FCE98;
+$white: #FFFFFF;
+$gray-text: #969696;
+$footer-bg: #F8F8F8;
+$card-text: #4A4A4A;
+//fonts
+$roboto: 'Roboto', sans-serif;
+@mixin flexRow($justify, $align){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flexCol($justify, $align){
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+}
