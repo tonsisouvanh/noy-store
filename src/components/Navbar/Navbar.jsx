@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { Link as LinkScroll } from "react-scroll";
 // SYLE
@@ -35,9 +35,15 @@ function Navbar() {
             class="fas fa-times"
           ></i>
           <ul className="mb-menu-links">
-            <Link onClick={closeMenu} to="/" className="mb-link home-active">
+            <NavLink
+              onClick={closeMenu}
+              exact
+              to="/"
+              className="mb-link"
+              activeClassName="home-active"
+            >
               <li>ໜ້າຫລັກ</li>
-            </Link>
+            </NavLink>
             <div className="mb-link">
               <li onClick={handleSubmenu}>
                 ເສື້ອຜ້າ
@@ -55,31 +61,37 @@ function Navbar() {
                   }
                 >
                   <li>
-                    <Link
+                    <NavLink
                       onClick={closeMenu}
-                      to="/page/products/"
+                      exact
+                      to="/page/products/all"
                       className="sub-link"
+                      activeClassName="home-active"
                     >
                       ທັງໝົດ
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       onClick={closeMenu}
+                      exact
                       to="/page/products/female"
                       className="sub-link"
+                      activeClassName="home-active"
                     >
                       ຍິງ
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       onClick={closeMenu}
+                      exact
                       to="/page/products/male"
                       className="sub-link"
+                      activeClassName="home-active"
                     >
                       ຊາຍ
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </li>
@@ -96,9 +108,15 @@ function Navbar() {
             >
               <li>ຕິດຕໍ່</li>
             </LinkScroll>
-            <Link onClick={closeMenu} to="#" className="mb-link">
+            {/* <NavLink
+              onClick={closeMenu}
+              exact
+              to="#"
+              className="mb-link"
+              activeClassName="home-active"
+            >
               <li>ກ່ຽວກັບ</li>
-            </Link>
+            </NavLink> */}
           </ul>
         </div>
         <div className="logo-container">
@@ -107,22 +125,36 @@ function Navbar() {
             id="menu-icon-active"
             class="fas fa-bars"
           ></i>
-          {/* <img src={logo} alt="" /> */}
           <p>MeShop</p>
         </div>
 
         {/* <i id="active" class="fas fa-times"></i> */}
         <div className="menu-container">
           <ul className="menu-links">
-            <Link to="/" className="link home-active">
+            <NavLink
+              exact
+              to="/"
+              className="link"
+              activeClassName="home-active"
+            >
               <li>ໜ້າຫລັກ</li>
-            </Link>
-            <Link to="/page/products/female" className="link">
+            </NavLink>
+            <NavLink
+              exact
+              to="/page/products/female"
+              className="link"
+              activeClassName="home-active"
+            >
               <li>ຍິງ</li>
-            </Link>
-            <Link to="/page/products/male" className="link">
+            </NavLink>
+            <NavLink
+              exact
+              to="/page/products/male"
+              className="link"
+              activeClassName="home-active"
+            >
               <li>ຊາຍ</li>
-            </Link>
+            </NavLink>
             <LinkScroll
               activeClass="nav-link-active"
               to="footer"
@@ -134,9 +166,9 @@ function Navbar() {
             >
               <li>ຕິດຕໍ່</li>
             </LinkScroll>
-            <Link to="#" className="link">
+            {/* <NavLink exact to="#" className="link" activeClassName="home-active">
               <li>ກ່ຽວກັບ</li>
-            </Link>
+            </NavLink> */}
           </ul>
         </div>
 

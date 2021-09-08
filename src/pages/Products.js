@@ -5,9 +5,11 @@ import ProductContext from "../components/ContextApi/ProductContext";
 
 function Products() {
   const { products, loading, error } = useContext(ProductContext);
+  // console.log(products.sort((a,b) => a.permalink > b.permalink ));
+
   return (
     <>
-      <ProductList products={products} loading={loading} error={error} />
+      <ProductList productItems={products} loading={loading} error={error} />
     </>
   );
 }

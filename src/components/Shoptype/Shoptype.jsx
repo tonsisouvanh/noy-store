@@ -43,7 +43,10 @@ function Shoptype({ products, loading, error }) {
           </div>
           <div className="card-description">
             <div className="box">
-              <Link to={`/page/product-detail/${product.id}`} className="link-name">
+              <Link
+                to={`/page/product-detail/${product.id}`}
+                className="link-name"
+              >
                 <p className="name">{product.name}</p>
               </Link>
               <p className="description">description</p>

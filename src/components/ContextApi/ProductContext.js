@@ -23,7 +23,7 @@ export const ProductProvider = (props) => {
     getData();
   }, []);
   return (
-    <ProductContext.Provider value={{ products, loading, error }}>
+    <ProductContext.Provider value={{ products, loading, error, setProducts }}>
       {props.children}
     </ProductContext.Provider>
   );

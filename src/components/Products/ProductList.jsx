@@ -1,19 +1,45 @@
 // export default ProductList
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import "./ProductList.css";
 import { Link, useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import Filter from "./Filter";
+// CONTEXT
+import ProductContext from "../../components/ContextApi/ProductContext";
 
-function ProductList({ products, loading, error }) {
+function ProductList() {
+  const { products, loading, error, setProducts } = useContext(ProductContext);
+  // -----------------filter feature--------------------
+  // const [filter, setFilter] = useState("lowhigh");
+  // useEffect(() => {
+  //   let temp;
+  //   if (filter === "lowhigh") {
+  //     temp = products.sort((a, b) => {
+  //       if (a.price.raw < b.price.raw) return -1;
+  //       if (a.price.raw > b.price.raw) return 1;
+  //       return 0;
+  //     });
+  //   }
+  //   if (filter === "highlow") {
+  //     temp = products.sort((a, b) => {
+  //       if (a.price.raw > b.price.raw) return -1;
+  //       if (a.price.raw < b.price.raw) return 1;
+  //       return 0;
+  //     });
+  //   }
+  //   setProducts(temp);
+  // }, [filter]);
+  // -------------------------------------------------
+
   const { type } = useParams();
   const [current, setCurrent] = useState(0);
+
   //product pagination
   const [pageNumber, setPageNumber] = useState(0);
-  const productsPerPage = 2;
+  const productsPerPage = 5;
   const pageCount = Math.ceil(products.length / productsPerPage);
   const pageVisited = pageNumber * productsPerPage;
-  // code...
   var checkCateType = (cates) => {
     for (let i = 0, l = cates.length; i < l; i++) {
       if (cates[i].slug === type) {
@@ -103,7 +129,7 @@ function ProductList({ products, loading, error }) {
                 </Link>
               </ul>
             </div>
-            <div className="box color">
+            {/* <div className="box color">
               <h3 className="category-title">Shop By Color</h3>
               <div className="colors">
                 <i id="color-1" class="fas fa-circle"></i>
@@ -170,89 +196,11 @@ function ProductList({ products, loading, error }) {
                   <span className="checkmark"></span>
                 </label>
               </div>
-            </div>
-            <div className="box best-seller">
-              {/* card here */}
-              <h3 className="category-title">Best Seller</h3>
-              <div className="best-seller-wrapper">
-                {/* <i onClick={prevSlide} class="fas fa-chevron-left"></i>
-                <i onClick={nextSlide} class="fas fa-chevron-right"></i> */}
-                {/* BEST SELLER ITEMS NEED TO BE MODEFIED */}
-                {/* {products.map((product, index) => {
-                  return (
-                    <div
-                      className={index === current ? "slide active" : "slide"}
-                    >
-                      {index === current && (
-                        <ProductCard
-                          key={product.permalink}
-                          id={product.id}
-                          name={product.name}
-                          img={
-                            product.assets &&
-                            product.assets
-                              .filter((pd, index) => index === 0)
-                              .map((img) => img.url)
-                          }
-                          hoverImg={
-                            product.assets &&
-                            product.assets
-                              .filter((pd, index) => index === 1)
-                              .map((img) => img.url)
-                          }
-                          assets={product.assets}
-                          price={product.price.formatted_with_code}
-                        />
-                      )}
-                    </div>
-                  );
-                })} */}
-              </div>
-            </div>
+            </div> */}
           </div>
           <div className="cards-container">
-            <div className="sort">
-              <div className="sort-feature">
-                <p>
-                  SHOW:
-                  <span className="numbers">
-                    <select name="" id="" value="">
-                      <option value="0">12</option>
-                      <option value="1">16</option>
-                      <option value="2">20</option>
-                      <option value="3">24</option>
-                    </select>
-                  </span>
-                </p>
-                <p>
-                  SORT BY:
-                  <span className="Featured">
-                    <select name="" id="Featured" value="">
-                      <option value="0">Featured</option>
-                      <option value="1">Price, low to high</option>
-                      <option value="2">Price, high to low</option>
-                      <option value="3">Best Selling</option>
-                    </select>
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="items">
-              {/* {products &&
-                products.map((product, index) => {
-                  return (
-                    <ProductCard
-                      key={index}
-                      id={product.id}
-                      name={product.name}
-                      image={product.media.source}
-                      price={product.price.formatted_with_code}
-                      sale={"50,000 LAK"}
-                    />
-                  );
-                })} */}
-              {type === "all" ? showAll : showType}
-            </div>
+            {/* <Filter filter={filter} setFilter={setFilter} /> */}
+            <div className="items">{type === "all" ? showAll : showType}</div>
             <ReactPaginate
               previousLabel={"ກັບຄືນ"}
               nextLabel={"ໄປໜ້າ"}
@@ -267,9 +215,6 @@ function ProductList({ products, loading, error }) {
           </div>
         </div>
       </div>
-      {/* {productList.map((item) => {
-        return <ProductCard name={item.name}/>;
-      })} */}
     </>
   );
 }

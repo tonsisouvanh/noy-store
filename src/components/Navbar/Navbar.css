@@ -108,26 +108,6 @@
   position: relative;
 }
 
-.nav-container .mobile-nav .mb-menu-links .mb-link li::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  background-color: #2FCE98;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.nav-container .mobile-nav .mb-menu-links .mb-link li:hover::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  height: 2.5px;
-}
-
 .nav-container .mobile-nav .mb-menu-links .mb-link li span {
   margin-left: 0.5rem;
 }
