@@ -5,6 +5,9 @@ import instagram from "../../image/instagram-circle.png";
 import twitter from "../../image/twitter-circle.png";
 import { Link } from "react-router-dom";
 function Footer() {
+  const date = new Date();
+  const fullYear = date.getFullYear();
+
   return (
     <>
       <div id="footer" className="footer-container">
@@ -27,8 +30,7 @@ function Footer() {
             <h2>ກ່ຽວກັບຮ້ານ</h2>
             <p className="paragraph">
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
-              odio. Quisque volutpat mattis eros. Nullam malesuada erat ut
-              tur
+              odio. Quisque volutpat mattis eros. Nullam malesuada erat ut tur
             </p>
           </div>
           <div className="col about-product">
@@ -58,8 +60,7 @@ function Footer() {
           </div>
         </div>
         <div className="copyright">
-          <i class="fas fa-copyright"></i>
-          <p>2021 copyright Tons</p>
+          <p>All &copy; copy rights are reserved to Ton's SISOUVANH {fullYear}</p>
         </div>
       </div>
     </>

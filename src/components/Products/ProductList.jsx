@@ -4,33 +4,12 @@ import ProductCard from "./ProductCard";
 import "./ProductList.css";
 import { Link, useParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import Filter from "./Filter";
-// CONTEXT
-import ProductContext from "../../components/ContextApi/ProductContext";
 
-function ProductList() {
-  const { products, loading, error, setProducts } = useContext(ProductContext);
-  // -----------------filter feature--------------------
-  // const [filter, setFilter] = useState("lowhigh");
-  // useEffect(() => {
-  //   let temp;
-  //   if (filter === "lowhigh") {
-  //     temp = products.sort((a, b) => {
-  //       if (a.price.raw < b.price.raw) return -1;
-  //       if (a.price.raw > b.price.raw) return 1;
-  //       return 0;
-  //     });
-  //   }
-  //   if (filter === "highlow") {
-  //     temp = products.sort((a, b) => {
-  //       if (a.price.raw > b.price.raw) return -1;
-  //       if (a.price.raw < b.price.raw) return 1;
-  //       return 0;
-  //     });
-  //   }
-  //   setProducts(temp);
-  // }, [filter]);
-  // -------------------------------------------------
+import Filter from "./Filter";
+
+function ProductList({ products, addProduct }) {
+  const [filter, setFilter] = useState("all");
+  //to store sorted product
 
   const { type } = useParams();
   const [current, setCurrent] = useState(0);
@@ -40,6 +19,42 @@ function ProductList() {
   const productsPerPage = 5;
   const pageCount = Math.ceil(products.length / productsPerPage);
   const pageVisited = pageNumber * productsPerPage;
+
+  const handleFilter = (val) => {
+    switch (val) {
+      case "lowhigh":
+        products.sort((a, b) => {
+          if (a.price.raw < b.price.raw) return -1;
+          if (a.price.raw > b.price.raw) return 1;
+          return 0;
+        });
+        break;
+      case "highlow":
+        products.sort((a, b) => {
+          if (a.price.raw > b.price.raw) return -1;
+          if (a.price.raw < b.price.raw) return 1;
+          return 0;
+        });
+        break;
+      case "az":
+        products.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        });
+        break;
+      case "za":
+        products.sort((a, b) => {
+          if (a.name > b.name) return -1;
+          if (a.name < b.name) return 1;
+          return 0;
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   var checkCateType = (cates) => {
     for (let i = 0, l = cates.length; i < l; i++) {
       if (cates[i].slug === type) {
@@ -61,6 +76,7 @@ function ProductList() {
             image={product.media.source}
             price={product.price.formatted_with_code}
             sale={"50,000 LAK"}
+            addProduct={addProduct}
           />
         );
       });
@@ -77,6 +93,7 @@ function ProductList() {
             image={product.media.source}
             price={product.price.formatted_with_code}
             sale={"50,000 LAK"}
+            addProduct={addProduct}
           />
         );
       });
@@ -199,8 +216,12 @@ function ProductList() {
             </div> */}
           </div>
           <div className="cards-container">
-            {/* <Filter filter={filter} setFilter={setFilter} /> */}
-            <div className="items">{type === "all" ? showAll : showType}</div>
+            <Filter
+              handleFilter={handleFilter}
+              filter={filter}
+              setFilter={setFilter}
+            />
+            <div className="items">{type !== "all" ? showType : showAll}</div>
             <ReactPaginate
               previousLabel={"ກັບຄືນ"}
               nextLabel={"ໄປໜ້າ"}

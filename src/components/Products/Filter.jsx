@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Filter.css";
-function Filter({ filter, setFilter }) {
+function Filter({ filter, setFilter, handleFilter }) {
   const options = [
     { value: "all", text: "All" },
     { value: "lowhigh", text: "Low to high" },
@@ -29,12 +29,13 @@ function Filter({ filter, setFilter }) {
               <select
                 onChange={(e) => {
                   setFilter(e.target.value);
+                  handleFilter(e.target.value);
                 }}
                 value={filter}
                 id="Featured"
               >
-                {options.map((opt) => {
-                  return <option value={opt.value}>{opt.text}</option>;
+                {options.map((opt, index) => {
+                  return <option key={index} value={opt.value}>{opt.text}</option>;
                 })}
               </select>
             </span>

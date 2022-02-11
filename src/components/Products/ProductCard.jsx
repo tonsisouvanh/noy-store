@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
-function ProductCard({ id, name, image, price, sale }) {
+function ProductCard({ id, name, image, price, sale, addProduct }) {
   return (
     <>
       <div className="product-card">
@@ -27,7 +27,7 @@ function ProductCard({ id, name, image, price, sale }) {
               </div>
             </div>
             <p className="price">
-              <span className="sale">50,000 LAK</span>{" "}
+              <span className="sale">50,000 LAK</span>
               {price.replace(".00", "")}
             </p>
           </div>
@@ -37,7 +37,14 @@ function ProductCard({ id, name, image, price, sale }) {
                 <i class="fas fa-plus-circle"></i>
               </span>
             </i>
-            <i id="fas" class="fas fa-shopping-cart">
+            <i
+              onClick={() => {
+                addProduct(id, 1);
+                alert("added");
+              }}
+              id="fas"
+              class="fas fa-shopping-cart"
+            >
               <span>
                 <i class="fas fa-plus-circle"></i>
               </span>

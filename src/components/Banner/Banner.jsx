@@ -20,7 +20,7 @@ function Banner() {
       <div className="banner-container">
         <i onClick={prevSlide} class="far fa-caret-square-left"></i>
         <i onClick={nextSlide} class="far fa-caret-square-right"></i>
-        <div className="position">
+        {/* <div className="position">
           <button className="explore-btn">
             <Link to="/page/products/all" className="link">
               ສິນຄ້າທັງໝົດ
@@ -29,7 +29,7 @@ function Banner() {
               </span>
             </Link>
           </button>
-        </div>
+        </div> */}
         {slidesImg &&
           slidesImg.map((item, index) => {
             return (

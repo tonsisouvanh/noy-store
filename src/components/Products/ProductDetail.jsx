@@ -1,15 +1,11 @@
 import React, { useState, useContext } from "react";
 import "./ProductDetail.css";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../ContextApi/ProductContext";
 
-function ProductDetail({ id }) {
-  const { products, loading, error } = useContext(ProductContext);
+function ProductDetail({ products, id }) {
   const product =
     products && products ? products.find((item) => item.id === id) : [];
-  const images = (product && product.assets ? product.assets : []);
-  // console.log("what", product ? product.name : "nothing");
-  // console.log(product && product.assets ? product.assets : []);
+  const images = product && product.assets ? product.assets : [];
   const [currImg, setCurrimg] = useState(0);
   const [pageNumber, setPageNumber] = useState(0);
   const imgPerPage = 4;

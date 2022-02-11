@@ -1,8 +1,6 @@
 import React, { useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import ProductCard from "../Products/ProductCard";
 import "./Shoptype.css";
-import { ProductContext } from "../ContextApi/ProductContext";
 import ReactPaginate from "react-paginate";
 
 function Shoptype({ products, loading, error }) {
@@ -59,9 +57,6 @@ function Shoptype({ products, loading, error }) {
         </div>
       );
     });
-
-  // console.log(displayProducts);
-  // console.log(pageCount);
   const prevImages = () => {
     setPageNumber(pageNumber === 0 ? pageCount - 1 : pageNumber - 1);
   };
@@ -104,7 +99,7 @@ function Shoptype({ products, loading, error }) {
               <button>Shop Now</button>
             </Link>
             <div className="transbox transbox-active">
-              <p>ໂມງ</p>
+              <p>ເສື້ອຜ້າ</p>
             </div>
           </div>
           <div className="card-item">
@@ -116,7 +111,7 @@ function Shoptype({ products, loading, error }) {
               <button>Shop Now</button>
             </Link>
             <div className="transbox transbox-active">
-              <p>ໂມງ</p>
+              <p>ສົ້ງ</p>
             </div>
           </div>
           <div className="card-item">
@@ -128,7 +123,7 @@ function Shoptype({ products, loading, error }) {
               <button>Shop Now</button>
             </Link>
             <div className="transbox transbox-active">
-              <p>ໂມງ</p>
+              <p>ອາຫານ</p>
             </div>
           </div>
         </div>

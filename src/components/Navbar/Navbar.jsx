@@ -6,7 +6,6 @@ import { Link as LinkScroll } from "react-scroll";
 import "./Navbar.css";
 
 // IMAGES
-import logo from "../../image/logo.jpg";
 import zoom from "../../image/zoom.png";
 import man from "../../image/man.png";
 import cart from "../../image/shopping-cart.png";
@@ -141,6 +140,14 @@ function Navbar() {
             </NavLink>
             <NavLink
               exact
+              to="/page/products/all"
+              className="link"
+              activeClassName="home-active"
+            >
+              <li>ທັງໝົດ</li>
+            </NavLink>
+            <NavLink
+              exact
               to="/page/products/female"
               className="link"
               activeClassName="home-active"
@@ -177,7 +184,6 @@ function Navbar() {
           <img src={zoom} alt="" />
         </div>
         <div className="profile-container">
-          <img src={man} alt="" />
           <img src={cart} alt="" />
           <img className="call-icn" src={call} alt="" />
           <p>037500274</p>
